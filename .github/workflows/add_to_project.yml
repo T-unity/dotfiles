@@ -1,0 +1,12 @@
+name: Add issue to project
+on:
+  issues:
+    types: [opened]
+jobs:
+  add_to_project:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Add to project
+        run: |
+          echo "Issue #$GITHUB_EVENT_ISSUE_NUMBER was opened"
+          gh project item add --id 1 --content-type ISSUE --content-id $GITHUB_EVENT_ISSUE_NUMBER
